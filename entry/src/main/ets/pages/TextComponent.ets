@@ -1,6 +1,6 @@
 
 @Component
-export struct MySlider {
+export default struct MySlider {
 
   @State outSetValueOne: number = 40
   build() {

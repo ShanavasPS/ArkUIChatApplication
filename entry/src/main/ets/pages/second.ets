@@ -1,6 +1,6 @@
 // Second.ets
 import router from '@ohos.router';
-import { MySlider } from './TextComponent';
+import MySlider from './TextComponent';
 
 @Entry
 @Component

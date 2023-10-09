@@ -2,6 +2,7 @@
   "src": [
     "pages/Index",
     "pages/second",
-    "pages/HomeScreen"
+    "pages/HomeScreen",
+    "pages/ChatScreen"
   ]
 }
