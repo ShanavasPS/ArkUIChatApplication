@@ -1,0 +1,78 @@
+// Second.ets
+import router from '@ohos.router';
+import { MySlider } from './TextComponent';
+
+@Entry
+@Component
+struct Second {
+  @State message: string = 'Hi, there'
+  @State username: string = ''
+  @State password: string = ''
+  controller: TextInputController = new TextInputController()
+  @State outSetValueOne: number = 40
+  build() {
+    Row() {
+      Column() {
+        MySlider()
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        TextInput({ text: this.username, placeholder: 'enter your username...', controller: this.controller })
+          .placeholderFont({ size: 14, weight: 400 })
+          .width(320).height(40).offset({y: 0})
+          .fontSize(14).fontColor(Color.Black)
+          .backgroundColor(Color.White)
+          .onChange((value: string) => {
+            this.username = value
+          })
+          .margin(20)
+        TextInput({ text: this.password, placeholder: 'enter you password...', controller: this.controller })
+          .placeholderFont({ size: 14, weight: 400 })
+          .width(320).height(40).offset({y: 0})
+          .fontSize(14).fontColor(Color.Black)
+          .backgroundColor(Color.White)
+          .type(InputType.Password)
+          .onChange((value: string) => {
+            this.password = value
+          })
+          .margin(20)
+        Button() {
+          Text('Login')
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+            .fontColor(Color.White)
+        }
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('40%')
+        .height('5%')
+        .onClick(() => {
+          router.pushUrl({ url: 'pages/HomeScreen' })
+        })
+        Button() {
+          Text('Back')
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+            .fontColor(Color.White)
+        }
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('40%')
+        .height('5%')
+        .onClick(() => {
+          router.back()
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .backgroundColor(Color.Orange)
+  }
+}
+
