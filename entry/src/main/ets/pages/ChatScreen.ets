@@ -1,6 +1,6 @@
 // Second.ets
 import router from '@ohos.router';
-import MySlider from './TextComponent';
+import ChatList from './ChatList';
 
 @Entry
 @Component
@@ -11,32 +11,30 @@ struct ChatScreen {
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Button() {
-          Text('Back')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-            .fontColor(Color.White)
-        }
-        .type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('40%')
-        .height('5%')
-        .onClick(() => {
-          router.back()
-        })
-      }
-      .width('100%')
+    Column() {
+        PageTitle()
+        ChatList()
     }
-    .height('100%')
-    .backgroundColor(Color.Orange)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+@Component
+struct PageTitle {
+  build() {
+    Flex({ alignItems: ItemAlign.Start }) {
+      Image($r('app.media.app_icon'))
+        .width(21.8)
+        .height(19.6)
+      Text('User name')
+        .fontSize(21.8)
+        .margin({left: 17.4})
+    }
+    .height(61)
+    .padding({ top: 13, bottom: 15, left: 28.3 })
+    .onClick(() => {
+      router.back()
+    })
   }
 }
 
