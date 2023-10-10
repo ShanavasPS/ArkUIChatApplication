@@ -1,19 +1,21 @@
 // Second.ets
 import router from '@ohos.router';
+import UserData from '../model/UserData';
 import ChatList from './ChatList';
 
 @Entry
 @Component
 struct ChatScreen {
+  // @ts-ignore
+  private userData: UserData = router.getParams().userData
   @State message: string = 'This is chat screen'
-  @State username: string = 'user 1'
   @State password: string = ''
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
   build() {
     Column() {
-        PageTitle({userName: this.username})
-        ChatList({userName: this.username})
+        PageTitle({userName: this.userData.name})
+        ChatList({userName: this.userData.name})
     }
     .alignItems(HorizontalAlign.Center)
   }
@@ -32,6 +34,7 @@ struct PageTitle {
         .margin({left: 17.4})
     }
     .height(61)
+    .margin({top: 36})
     .padding({ top: 13, bottom: 15, left: 28.3 })
     .onClick(() => {
       router.back()
