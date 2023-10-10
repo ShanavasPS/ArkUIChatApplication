@@ -1,3 +1,4 @@
+import router from '@ohos.router'
 import ChatData from '../model/ChatData'
 import { initializeOnStartup } from '../model/ChatDataModel'
 
@@ -5,9 +6,11 @@ import { initializeOnStartup } from '../model/ChatDataModel'
 @Component
 export default struct ChatList {
   private chatItems: ChatData[] = initializeOnStartup()
+  private userName: string
+
   build() {
     List() {
-      ForEach(this.chatItems.filter(item => (item.name === 'user 1')), item => {
+      ForEach(this.chatItems.filter(item => (item.name === this.userName)), item => {
         ListItem() {
           ChatListItem({ chatItem: item })
         }
