@@ -24,9 +24,6 @@ struct ChatListItem {
   private chatItem: ChatData
   build() {
     Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
-      Text(this.chatItem.name)
-        .fontSize(14)
-        .flexGrow(1)
       Text(this.chatItem.message)
         .fontSize(14)
     }

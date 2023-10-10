@@ -14,3 +14,9 @@ export function initializeOnStartup(): Array<ChatData> {
   })
   return ChatDataArray;
 }
+
+export function addMessage(name: string, message: string): Array<ChatData> {
+  let ChatDataArray = initializeOnStartup();
+  ChatDataArray.push(new ChatData(name, message, 'Some time'));
+  return ChatDataArray;
+}

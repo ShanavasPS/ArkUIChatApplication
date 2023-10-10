@@ -7,7 +7,7 @@ export default struct Updates {
   @State message: string = 'Hi, there'
   @State username: string = ''
   @State password: string = ''
-  controller: TextInputController = new TextInputController()
+
   @State outSetValueOne: number = 40
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
