@@ -5,11 +5,11 @@ import ChatDataSource from '../model/ChatDataModel'
 @Component
 export default struct ChatList {
   @Prop private userName: string
-  @Prop private chatItems: ChatData[]
+  @Consume private chats: Array<ChatData>
 
   build() {
     List() {
-      ForEach(this.chatItems.filter(item => (item.name === this.userName)), item => {
+      ForEach(this.chats.filter(item => (item.name === this.userName)), item => {
         ListItem() {
           ChatListItem({ chatItem: item })
         }

@@ -15,7 +15,7 @@ struct ChatScreen {
   controller: TextInputController = new TextInputController()
 
   datasource: ChatDataSource = new ChatDataSource()
-  @State chats: Array<ChatData> = this.datasource.getData()
+  @Provide chats: Array<ChatData> = this.datasource.getData()
 
   @State userName:string = this.userData.name
 
@@ -28,7 +28,7 @@ struct ChatScreen {
     Row() {
       Column() {
         PageTitle({userName: this.userName})
-        ChatList({chatItems: this.chats, userName: this.userData.name})
+        ChatList({userName: this.userData.name})
           .height('80%')
         Row() {
           TextInput({ text: this.message, placeholder: 'search...' })
