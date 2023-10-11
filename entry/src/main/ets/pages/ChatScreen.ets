@@ -8,15 +8,15 @@ import ChatData from '../model/ChatData'
 @Entry
 @Component
 struct ChatScreen {
-  // @ts-ignore
-  private userData: UserData = router.getParams().userData
-  @State message: string = ''
 
   controller: TextInputController = new TextInputController()
+  @State message: string = ''
 
   datasource: ChatDataSource = new ChatDataSource()
   @Provide chats: Array<ChatData> = this.datasource.getData()
 
+  // @ts-ignore
+  private userData: UserData = router.getParams().userData
   @State userName:string = this.userData.name
 
   private sendMessage(message: string) {
@@ -28,7 +28,7 @@ struct ChatScreen {
     Row() {
       Column() {
         PageTitle({userName: this.userName})
-        ChatList({userName: this.userData.name})
+        ChatList({userName: this.userName})
           .height('80%')
         Row() {
           TextInput({ text: this.message, placeholder: 'search...' })

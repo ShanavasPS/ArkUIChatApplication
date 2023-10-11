@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/second",
     "pages/HomeScreen",
-    "pages/ChatScreen"
+    "pages/ChatScreen",
+    "pages/initialPage"
   ]
 }

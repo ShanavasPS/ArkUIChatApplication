@@ -4,7 +4,7 @@ import ChatDataSource from '../model/ChatDataModel'
 
 @Component
 export default struct ChatList {
-  @Prop private userName: string
+  @Link private userName: string
   @Consume private chats: Array<ChatData>
 
   build() {
