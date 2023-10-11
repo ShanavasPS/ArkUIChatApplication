@@ -2,12 +2,10 @@ import router from '@ohos.router'
 import ChatData from '../model/ChatData'
 import ChatDataSource from '../model/ChatDataModel'
 
-@Entry
 @Component
 export default struct ChatList {
-  private userName: string
-  datasource: ChatDataSource = new ChatDataSource()
-  private chatItems: ChatData[] = this.datasource.getData()
+  @Prop private userName: string
+  @Prop private chatItems: ChatData[]
 
   build() {
     List() {

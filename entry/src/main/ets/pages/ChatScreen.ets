@@ -2,6 +2,8 @@
 import router from '@ohos.router';
 import UserData from '../model/UserData';
 import ChatList from './ChatList';
+import ChatDataSource from '../model/ChatDataModel'
+import ChatData from '../model/ChatData'
 
 @Entry
 @Component
@@ -11,13 +13,22 @@ struct ChatScreen {
   @State message: string = ''
 
   controller: TextInputController = new TextInputController()
-  @State outSetValueOne: number = 40
+
+  datasource: ChatDataSource = new ChatDataSource()
+  @State chats: Array<ChatData> = this.datasource.getData()
+
+  @State userName:string = this.userData.name
+
+  private sendMessage(message: string) {
+    this.datasource.addMessage(this.userData.name, message, "some time");
+    this.chats = this.datasource.getData()
+  }
 
   build() {
     Row() {
       Column() {
-        PageTitle({userName: this.userData.name})
-        ChatList({userName: this.userData.name})
+        PageTitle({userName: this.userName})
+        ChatList({chatItems: this.chats, userName: this.userData.name})
           .height('80%')
         Row() {
           TextInput({ text: this.message, placeholder: 'search...' })
@@ -34,8 +45,7 @@ struct ChatScreen {
               .fontColor(Color.White)
             }
             .onClick(() => {
-              console.log(this.message)
-
+              this.sendMessage(this.message)
             })
         }
       }
@@ -49,7 +59,8 @@ struct ChatScreen {
 
 @Component
 struct PageTitle {
-  private userName: string
+  @Prop private userName: string
+
   build() {
     Flex({ alignItems: ItemAlign.Start }) {
       Image($r('app.media.app_icon'))

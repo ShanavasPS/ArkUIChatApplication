@@ -6,8 +6,6 @@ import { initializeOnStartup } from '../model/UserDataModel'
 @Component
 export default struct UserList {
   private users: UserData[] = initializeOnStartup()
-  private userName: string
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   build() {
     List({ space: 12, initialIndex: 0 }) {

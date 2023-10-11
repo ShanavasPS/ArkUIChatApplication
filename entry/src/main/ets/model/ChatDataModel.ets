@@ -19,5 +19,9 @@ export default class ChatDataSource {
   public getData(): Array<ChatData> {
     return this.dataArray
   }
+
+  public addMessage(name: string, message: string, time: string) {
+    this.dataArray.push(new ChatData(name, message, time));
+  }
 }
 
