@@ -5,11 +5,13 @@ export default class ChatData {
   name: string;
   message: string;
   time: string;
+  type: string;
 
-  constructor(name: string, message: string, time: string) {
+  constructor(name: string, message: string, time: string, type: string) {
     this.id = `${ NextId++ }`;
     this.name = name;
     this.message = message;
     this.time = time;
+    this.type = type;
   }
 }

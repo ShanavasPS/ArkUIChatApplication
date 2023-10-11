@@ -22,11 +22,30 @@ export default struct ChatList {
 struct ChatListItem {
   private chatItem: ChatData
   build() {
-    Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
-      Text(this.chatItem.message)
-        .fontSize(14)
+    Column() {
+      if(this.chatItem.type == 'received') {
+        Row() {
+          Text(this.chatItem.message)
+            .fontSize(14)
+            .textAlign(TextAlign.Start)
+            .align(Alignment.End)
+            .backgroundColor(Color.Blue)
+        }
+        .alignSelf(ItemAlign.Start)
+        .margin({left: 10})
+      } else {
+        Row() {
+          Text(this.chatItem.message)
+            .fontSize(14)
+            .textAlign(TextAlign.End)
+            .backgroundColor(Color.Green)
+        }
+        .alignSelf(ItemAlign.End)
+        .margin({right: 10})
+      }
     }
     .height(64)
-    .margin({ right: 24, left:32 })
+    .width('100%')
+    .margin({top: 10})
   }
 }
