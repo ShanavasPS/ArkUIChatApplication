@@ -62,11 +62,15 @@ struct HomeScreen {
     Flex({alignItems: ItemAlign.Center}) {
       ForEach(this.Build, (item:A) => {
         Column() {
+          Blank()
+            .height(1)
+            .backgroundColor('#ECEFF1')
           Image(this.currentIndex == item.num ? item.image_selected : item.image)
             .width(24)
             .height(24)
+            .margin({ top: 6 })
           Text(item.text)
-            .fontColor(this.currentIndex == item.num ? '#FFFFFF' : '#000000')
+            .fontColor(this.currentIndex == item.num ? '#339AF0' : '#000000')
             .fontSize(10)
             .lineHeight(14)
             .fontWeight(500)
@@ -77,7 +81,8 @@ struct HomeScreen {
           this.title = item.text;
         })
       })
-    }.margin({ top: 10 })
+    }
+    .backgroundColor('#FAFAFA')
   }
 
   build() {

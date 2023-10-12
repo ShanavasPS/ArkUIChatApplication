@@ -8,21 +8,26 @@ export default struct UserList {
   private users: UserData[] = initializeOnStartup()
 
   build() {
-    List({ space: 12, initialIndex: 0 }) {
+    List({ space: 8, initialIndex: 0 }) {
       ForEach(this.users, (item:UserData) => {
         ListItem() {
           Button() {
-            Row() {
-              Image($r('app.media.shanavas'))
-                .width(48)
-                .height(48)
-                .borderRadius(24)
-                .margin({left:8, right:8})
-              Text(item.name)
-                .width('70%')
-                .fontSize(16)
-                .fontWeight(FontWeight.Bold)
-                .align(Alignment.TopStart)
+            Column() {
+              Row() {
+                Image($r('app.media.shanavas'))
+                  .width(48)
+                  .height(48)
+                  .borderRadius(24)
+                  .margin({left:8, right:8})
+                Text(item.name)
+                  .width('70%')
+                  .fontSize(16)
+                  .fontWeight(FontWeight.Bold)
+                  .align(Alignment.TopStart)
+              }
+              Blank('1')
+                .backgroundColor('#ECEFF1')
+                .margin({ top: 8 , left: 56 })
             }
           }
           .onClick(() => {

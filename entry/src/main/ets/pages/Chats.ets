@@ -23,6 +23,9 @@ export default struct Chats {
           .height(40)
           .backgroundColor('#ECEFF1')
           .margin({ top: 8 })
+        Blank('1')
+          .backgroundColor('#ECEFF1')
+          .margin({ top: 4 })
         UserList()
       }
       .width('100%')
