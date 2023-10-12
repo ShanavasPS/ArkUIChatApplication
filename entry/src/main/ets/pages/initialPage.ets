@@ -1,4 +1,5 @@
 // Chats.ets
+import router from '@ohos.router';
 import UserList from './UserList';
 
 PersistentStorage.persistProp("persistedUser", "None");
@@ -15,6 +16,15 @@ export default struct Chats {
   // @LocalStorageLink variable decorator creates two-way link with property "PropA" in LocalStorage
   @StorageLink("persistedUser") persistedUser: string = "User 2";
 
+  aboutToAppear() {
+    if(this.persistedUser == "None") {
+      console.log("Nobody has logged in yet")
+      router.pushUrl({ url: 'pages/Login' })
+    } else {
+      console.log(this.persistedUser + " had already logged in, so go to homepage")
+      router.pushUrl({ url: 'pages/HomeScreen' })
+    }
+  }
 
   //PersistentStorage.deleteProp('highScore');
   build() {

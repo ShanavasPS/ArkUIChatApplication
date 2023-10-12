@@ -1,7 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/second",
+    "pages/Login",
     "pages/HomeScreen",
     "pages/ChatScreen",
     "pages/initialPage"

@@ -13,7 +13,6 @@ struct Second {
   build() {
     Row() {
       Column() {
-        MySlider()
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
@@ -51,22 +50,6 @@ struct Second {
         .height('5%')
         .onClick(() => {
           router.pushUrl({ url: 'pages/HomeScreen' })
-        })
-        Button() {
-          Text('Back')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-            .fontColor(Color.White)
-        }
-        .type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('40%')
-        .height('5%')
-        .onClick(() => {
-          router.back()
         })
       }
       .width('100%')
