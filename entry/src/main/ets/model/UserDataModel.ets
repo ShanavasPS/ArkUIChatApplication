@@ -1,18 +1,17 @@
 import UserData from './UserData';
 
 const UserComposition: any[] = [
-  { 'name': 'user 1', 'image': $r('app.media.shanavas') },
-  { 'name': 'user 2', 'image': $r('app.media.shanavas') },
-  { 'name': 'user 3', 'image': $r('app.media.icon') },
-  { 'name': 'user 4', 'image': $r('app.media.startIcon') }
+  { 'name': 'Shanavas Shaji', 'email': 'shanavas.shaji@huawei.com', 'image': $r('app.media.shanavas') },
+  { 'name': 'Victoria Maslova', 'email': 'victoria.maslova@huawei.com', 'image': $r('app.media.dummy_user') },
+  { 'name': 'Alexey Smolyaninov', 'email': 'alexey.smolyaninov@huawei.com', 'image': $r('app.media.dummy_user') },
+  { 'name': 'Sarath Singapati', 'email': 'sarath.singapati@huawei.com', 'image': $r('app.media.dummy_user') },
+  { 'name': 'Sanib Nazar', 'email': 'sanib.nazar@huawei.com', 'image': $r('app.media.sanib') },
 ]
 
 export function initializeOnStartup(): Array<UserData> {
   let UserDataArray: Array<UserData> = []
   UserComposition.forEach(item => {
-    UserDataArray.push(new UserData(item.name, item.image));
+    UserDataArray.push(new UserData(item.name, item.email, item.image));
   })
-  console.log(UserDataArray.length.toString())
-  console.log(UserDataArray.toString())
   return UserDataArray;
 }

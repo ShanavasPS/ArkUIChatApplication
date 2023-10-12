@@ -14,7 +14,7 @@ export default struct UserList {
           Button() {
             Column() {
               Row() {
-                Image($r('app.media.shanavas'))
+                Image(item.image)
                   .width(48)
                   .height(48)
                   .borderRadius(24)
