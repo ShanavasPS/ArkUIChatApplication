@@ -30,7 +30,7 @@ struct ChatScreen {
         PageTitle({userName: this.userName})
         ChatList({userName: this.userName})
           .height('80%')
-          .margin({left: 14})
+          .backgroundColor(Color.Gray)
         Row() {
           TextInput({ text: this.message, placeholder: 'search...' })
             .width('80%')
@@ -46,14 +46,17 @@ struct ChatScreen {
               .fontColor(Color.White)
             }
             .onClick(() => {
-              this.sendMessage(this.message)
+              if(this.message.length != 0) {
+                this.sendMessage(this.message)
+              }
             })
-        }
+           .margin({left: 10})
+        }.margin({top: 10})
       }
       .width('100%')
     }
     .height('100%')
-    .backgroundColor(Color.Orange)
+    .backgroundColor(Color.Green)
     .alignItems(VerticalAlign.Top)
   }
 }

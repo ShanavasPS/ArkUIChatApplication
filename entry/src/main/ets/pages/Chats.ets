@@ -21,14 +21,13 @@ export default struct Chats {
         TextInput({ placeholder: 'search...' })
           .width('90%')
           .height(40)
-          .backgroundColor('#FFFFFF')
+          .backgroundColor('#ECEFF1')
           .margin({ top: 8 })
         UserList()
       }
       .width('100%')
     }
     .height('100%')
-    .backgroundColor(Color.Orange)
   }
 }
 

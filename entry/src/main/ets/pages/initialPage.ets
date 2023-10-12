@@ -47,7 +47,7 @@ export default struct Chats {
       .width('100%')
     }
     .height('100%')
-    .backgroundColor(Color.Orange)
+    .backgroundColor(Color.Gray)
   }
 }
 

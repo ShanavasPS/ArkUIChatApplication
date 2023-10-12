@@ -100,6 +100,6 @@ struct HomeScreen {
       .onTitleModeChange((titleModel: NavigationTitleMode) => {
         console.info('titleMode' + titleModel)
       })
-    }.width('100%').height('100%').backgroundColor(Color.Green)
+    }.width('100%').height('100%')
   }
 }

@@ -31,6 +31,7 @@ export default struct UserList {
               params: { userData: item }
             })
           })
+          .backgroundColor(Color.White)
         }.editable(true)
       }, (item:UserData) => item.id.toString())
     }

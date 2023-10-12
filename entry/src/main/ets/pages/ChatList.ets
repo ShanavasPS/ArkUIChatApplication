@@ -14,7 +14,7 @@ export default struct ChatList {
           ChatListItem({ chatItem: item })
         }
       }, item => item.id.toString())
-    }
+    }.margin({top: 10})
   }
 }
 
@@ -32,7 +32,7 @@ struct ChatListItem {
             .backgroundColor(Color.Blue)
         }
         .alignSelf(ItemAlign.Start)
-        .margin({left: 10})
+        .margin({left: 15, right: 10})
       } else {
         Row() {
           Text(this.chatItem.message)
@@ -41,11 +41,10 @@ struct ChatListItem {
             .backgroundColor(Color.Green)
         }
         .alignSelf(ItemAlign.End)
-        .margin({right: 10})
+        .margin({right: 15})
       }
     }
     .height(64)
     .width('100%')
-    .margin({top: 10})
   }
 }

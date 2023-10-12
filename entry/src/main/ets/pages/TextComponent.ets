@@ -10,7 +10,7 @@ export default struct MySlider {
           max: 100,
           style: SliderStyle.OutSet
         })
-    .backgroundColor(Color.Orange)
+    .backgroundColor(Color.Gray)
   }
 }
 
