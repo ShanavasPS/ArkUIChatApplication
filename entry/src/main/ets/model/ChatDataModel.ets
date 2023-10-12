@@ -4,10 +4,10 @@ export default class ChatDataSource {
   private dataArray: Array<ChatData> = []
 
   private initialData: any[] = [
-    { 'name': 'user 1', 'message': 'Hi, I am the user 1', 'time': 'Some time', 'type': 'received' },
-    { 'name': 'user 2', 'message': 'Hi, I am user 2', 'category': 'Some other time', 'type': 'received' },
-    { 'name': 'user 1', 'message': 'How are you?', 'time': 'Some time', 'type': 'received' },
-    { 'name': 'user 2', 'message': 'How are you?', 'category': 'Some other time', 'type': 'received' }
+    { 'name': 'Shanavas Shaji', 'message': 'Hi, there', 'time': 'Some time', 'type': 'received' },
+    { 'name': 'Victoria Maslova', 'message': 'Hi, there', 'category': 'Some other time', 'type': 'received' },
+    { 'name': 'Shanavas Shaji', 'message': 'How are you?', 'time': 'Some time', 'type': 'received' },
+    { 'name': 'Alexey Smolyaninov', 'message': 'How are you?', 'category': 'Some other time', 'type': 'received' }
   ]
 
   constructor() {

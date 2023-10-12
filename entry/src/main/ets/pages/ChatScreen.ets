@@ -35,6 +35,7 @@ struct ChatScreen {
           .backgroundColor(AppColors.separator)
         ChatList({userName: this.userName})
           .height('80%')
+          .backgroundColor(AppColors.chatBackground)
         Column() {
           Blank()
             .height(1)
