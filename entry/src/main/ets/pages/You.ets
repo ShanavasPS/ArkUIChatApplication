@@ -34,6 +34,7 @@ export default  struct You {
         .width('40%')
         .height('5%')
         .onClick(() => {
+          PersistentStorage.deleteProp("persistedUser");
           router.back()
         })
       }

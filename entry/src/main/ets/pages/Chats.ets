@@ -18,7 +18,6 @@ export default struct Chats {
   build() {
     Row() {
       Column() {
-        Text(this.persistedUser)
         TextInput({ placeholder: 'search...' })
           .width('90%')
           .height(40)

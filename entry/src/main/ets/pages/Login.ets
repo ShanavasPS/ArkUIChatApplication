@@ -2,6 +2,8 @@
 import router from '@ohos.router';
 import MySlider from './TextComponent';
 
+PersistentStorage.persistProp("persistedUser", "None");
+
 @Entry
 @Component
 struct Second {
@@ -10,6 +12,18 @@ struct Second {
   @State password: string = ''
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
+
+  @StorageLink("persistedUser") persistedUser: string = "User 2";
+
+  aboutToAppear() {
+    if(this.persistedUser == "None") {
+      console.log("Nobody has logged in yet")
+    } else {
+      console.log(this.persistedUser + " had already logged in, so go to homepage")
+      router.pushUrl({ url: 'pages/HomeScreen' })
+    }
+  }
+
   build() {
     Row() {
       Column() {
@@ -49,6 +63,7 @@ struct Second {
         .width('40%')
         .height('5%')
         .onClick(() => {
+          this.persistedUser = this.username
           router.pushUrl({ url: 'pages/HomeScreen' })
         })
       }

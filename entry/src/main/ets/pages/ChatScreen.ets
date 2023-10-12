@@ -30,6 +30,7 @@ struct ChatScreen {
         PageTitle({userName: this.userName})
         ChatList({userName: this.userName})
           .height('80%')
+          .margin({left: 14})
         Row() {
           TextInput({ text: this.message, placeholder: 'search...' })
             .width('80%')
@@ -62,20 +63,19 @@ struct PageTitle {
   @Prop private userName: string
 
   build() {
-    Flex({ alignItems: ItemAlign.Start }) {
-      Image($r('app.media.app_icon'))
+    Row() {
+      Image($r('app.media.backArrow'))
         .width(21.8)
         .height(19.6)
       Text(this.userName)
         .fontSize(21.8)
-        .margin({left: 17.4})
-        .align(Alignment.Center)
-        .textAlign(TextAlign.Center)
+        .margin({left: 10})
+        .textAlign(TextAlign.Start)
+        .fontWeight(FontWeight.Bold)
     }
+    .alignSelf(ItemAlign.Start)
     .height(61)
-    .margin({top: 36})
-    .padding({ top: 13, bottom: 15, left: 28.3 })
-    .backgroundColor(Color.Red)
+    .margin({top: 36, left: 14})
     .onClick(() => {
       router.back()
     })

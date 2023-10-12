@@ -2,7 +2,6 @@
 import router from '@ohos.router';
 import UserList from './UserList';
 
-PersistentStorage.persistProp("persistedUser", "None");
 
 @Entry
 @Component

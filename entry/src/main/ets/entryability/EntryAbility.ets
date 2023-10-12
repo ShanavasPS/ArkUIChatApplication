@@ -6,7 +6,7 @@ import window from '@ohos.window';
 
 export default class EntryAbility extends UIAbility {
 
-  private initialScreen: string = 'pages/initialPage';
+  private initialScreen: string = 'pages/Login';
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
