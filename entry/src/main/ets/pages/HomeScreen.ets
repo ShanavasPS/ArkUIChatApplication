@@ -1,4 +1,9 @@
 import { AppColors } from '../model/common';
+import You from './You';
+import Chats from './Chats';
+import Updates from './Updates';
+import UserData from '../model/UserData';
+import UserDataSource from '../model/UserDataModel'
 
 class A {
   text:string=''
@@ -7,14 +12,18 @@ class A {
   image_selected:Resource=$r('app.media.icon')
 }
 
-import MySlider from './TextComponent';
-import You from './You';
-import Chats from './Chats';
-import Updates from './Updates';
-
 @Entry
 @Component
 struct HomeScreen {
+  datasource: UserDataSource = new UserDataSource()
+  @Provide users: Array<UserData> = this.datasource.getData()
+
+  @StorageLink("persistedUser") persistedUser: string = "None";
+
+  registeredUser: Boolean = this.users.filter(item => (item.email === this.persistedUser)).length > 0
+
+  private user: UserData;
+
   @State currentIndex: number = 0
   @State title: string = "Updates"
   @State Build: Array<Object> = [
@@ -38,6 +47,12 @@ struct HomeScreen {
     } as A
   ]
 
+  aboutToAppear() {
+    if(this.registeredUser) {
+      this.user = this.users.filter(item => (item.email === this.persistedUser))[0]
+    }
+  }
+
   @Builder NavigationTitle() {
     Column() {
       Text(this.title)
@@ -50,7 +65,7 @@ struct HomeScreen {
 
   @Builder NavigationMenus() {
     Row() {
-      Image($r('app.media.shanavas'))
+      Image(this.registeredUser ? this.user.image : $r('app.media.dummy_user'))
         .width(48)
         .height(48)
         .borderRadius(24)
