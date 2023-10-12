@@ -1,6 +1,8 @@
 // Second.ets
 import router from '@ohos.router';
 import { AppColors } from '../model/common';
+import UserData from '../model/UserData';
+import UserDataSource from '../model/UserDataModel';
 
 @Entry
 @Component
@@ -11,7 +13,20 @@ export default  struct You {
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
 
-  @StorageLink("persistedUser") persistedUser: string = "User 2";
+  datasource: UserDataSource = new UserDataSource()
+  users: Array<UserData> = this.datasource.getData()
+
+  @StorageLink("persistedUser") persistedUser: string = "None";
+
+  registeredUser: Boolean = this.users.filter(item => (item.email === this.persistedUser)).length > 0
+
+  private user: UserData;
+
+  aboutToAppear() {
+    if(this.registeredUser) {
+      this.user = this.users.filter(item => (item.email === this.persistedUser))[0]
+    }
+  }
 
   build() {
       Column() {
@@ -22,7 +37,7 @@ export default  struct You {
           .align(Alignment.Top)
         Row() {
           Column() {
-            Image($r('app.media.shanavas'))
+            Image(this.registeredUser ? this.user.image : $r('app.media.dummy_user'))
               .width(100)
               .height(100)
             Text(this.persistedUser)
