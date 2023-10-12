@@ -4,6 +4,7 @@ import UserData from '../model/UserData';
 import ChatList from './ChatList';
 import ChatDataSource from '../model/ChatDataModel'
 import ChatData from '../model/ChatData'
+import { AppColors } from '../model/common';
 
 @Entry
 @Component
@@ -28,35 +29,45 @@ struct ChatScreen {
     Row() {
       Column() {
         PageTitle({userName: this.userName})
+        Blank()
+          .height(1)
+          .width('100%')
+          .backgroundColor(AppColors.separator)
         ChatList({userName: this.userName})
           .height('80%')
-          .backgroundColor(Color.Gray)
-        Row() {
-          TextInput({ text: this.message, placeholder: 'search...' })
-            .width('80%')
-            .height(40)
-            .backgroundColor('#FFFFFF')
-            .onChange((value: string) => {
-              this.message = value
-            })
-          Button() {
-            Text('Send')
-              .fontSize(18)
-              .fontWeight(FontWeight.Bold)
-              .fontColor(Color.White)
+        Column() {
+          Blank()
+            .height(1)
+            .width('100%')
+            .backgroundColor(AppColors.separator)
+          Row() {
+            TextInput({ text: this.message, placeholder: 'search...' })
+              .width('80%')
+              .height(40)
+              .onChange((value: string) => {
+                this.message = value
+              })
+            Button() {
+              Text('Send')
+                .fontSize(18)
+                .fontWeight(FontWeight.Bold)
+                .fontColor(Color.Blue)
             }
+            .margin({left: 6})
             .onClick(() => {
               if(this.message.length != 0) {
                 this.sendMessage(this.message)
               }
             })
-           .margin({left: 10})
-        }.margin({top: 10})
+            .backgroundColor(Color.White)
+          }
+          .margin({top : 8})
+        }
+        .backgroundColor(AppColors.bottomBar)
       }
       .width('100%')
     }
     .height('100%')
-    .backgroundColor(Color.Green)
     .alignItems(VerticalAlign.Top)
   }
 }
@@ -84,4 +95,3 @@ struct PageTitle {
     })
   }
 }
-

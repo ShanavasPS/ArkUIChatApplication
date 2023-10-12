@@ -1,4 +1,4 @@
-import router from '@ohos.router';
+import { AppColors } from '../model/common';
 
 class A {
   text:string=''
@@ -82,7 +82,7 @@ struct HomeScreen {
         })
       })
     }
-    .backgroundColor('#FAFAFA')
+    .backgroundColor(AppColors.bottomBar)
   }
 
   build() {

@@ -1,5 +1,5 @@
 // Updates.ets
-import router from '@ohos.router';
+import { AppColors } from '../model/common';
 
 @Entry
 @Component
@@ -12,12 +12,18 @@ export default struct Updates {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   build() {
-    Row() {
+    Column() {
+      Blank()
+        .height(1)
+        .width('100%')
+        .backgroundColor(AppColors.separator)
+        .align(Alignment.Top)
       Column() {
         Text('Status')
           .width('90%')
           .height(40)
           .margin({ top: 8 })
+          .fontWeight(FontWeight.Bold)
 
         List({ space: 12, initialIndex: 0 }) {
           ForEach(this.arr, (item:number) => {
@@ -33,7 +39,6 @@ export default struct Updates {
           }, (item:number) => item.toString())
         }
         .listDirection(Axis.Horizontal)
-        .height('100%')
         .width('100%')
         .margin({ top: 12, left: '10%', right: '10%' })
       }

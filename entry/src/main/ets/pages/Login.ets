@@ -1,6 +1,7 @@
 // Second.ets
 import router from '@ohos.router';
 import MySlider from './TextComponent';
+import { AppColors } from '../model/common';
 
 PersistentStorage.persistProp("persistedUser", "None");
 
@@ -34,7 +35,7 @@ struct Second {
           .placeholderFont({ size: 14, weight: 400 })
           .width(320).height(40).offset({y: 0})
           .fontSize(14).fontColor(Color.Black)
-          .backgroundColor(Color.White)
+          .backgroundColor(AppColors.textBox)
           .onChange((value: string) => {
             this.username = value
           })
@@ -43,7 +44,7 @@ struct Second {
           .placeholderFont({ size: 14, weight: 400 })
           .width(320).height(40).offset({y: 0})
           .fontSize(14).fontColor(Color.Black)
-          .backgroundColor(Color.White)
+          .backgroundColor(AppColors.textBox)
           .type(InputType.Password)
           .onChange((value: string) => {
             this.password = value
@@ -70,7 +71,6 @@ struct Second {
       .width('100%')
     }
     .height('100%')
-    .backgroundColor(Color.Gray)
   }
 }
 
