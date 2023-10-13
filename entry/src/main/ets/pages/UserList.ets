@@ -4,6 +4,11 @@ import UserData from '../model/UserData'
 @Component
 export default struct UserList {
   @Consume private users: Array<UserData>
+  @StorageLink("persistedUser") persistedUser: string = "None";
+
+  aboutToAppear() {
+    this.users = this.users.filter(item => (item.username !== this.persistedUser))
+  }
 
   build() {
     List({ space: 8, initialIndex: 0 }) {

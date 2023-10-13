@@ -1,5 +1,4 @@
 // Chats.ets
-import UserData from '../model/UserData';
 import UserList from './UserList';
 
 PersistentStorage.persistProp("persistedUser", "User 1");

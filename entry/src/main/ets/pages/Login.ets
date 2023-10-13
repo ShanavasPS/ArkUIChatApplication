@@ -1,6 +1,5 @@
-// Second.ets
+// Login.ets
 import router from '@ohos.router';
-import MySlider from './TextComponent';
 import { AppColors } from '../model/common';
 
 PersistentStorage.persistProp("persistedUser", "None");

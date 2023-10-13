@@ -1,4 +1,4 @@
-// Chats.ets
+// InitialPage.ets
 import router from '@ohos.router';
 import UserList from './UserList';
 

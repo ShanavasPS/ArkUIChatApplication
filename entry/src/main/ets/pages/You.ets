@@ -1,4 +1,4 @@
-// Second.ets
+// You.ets
 import router from '@ohos.router';
 import { AppColors } from '../model/common';
 import UserData from '../model/UserData';

@@ -1,5 +1,4 @@
-import router from '@ohos.router'
-import App from '@system.app';
+
 import ChatData from '../model/ChatData'
 import { AppColors } from '../model/common';
 

@@ -1,4 +1,4 @@
-// Second.ets
+// ChatScreen.ets
 import router from '@ohos.router';
 import UserData from '../model/UserData';
 import ChatList from './ChatList';
