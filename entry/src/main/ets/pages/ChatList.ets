@@ -30,6 +30,7 @@ struct ChatListItem {
             .textAlign(TextAlign.Start)
             .align(Alignment.End)
             .backgroundColor(Color.White)
+            .borderRadius(12)
             .padding(12)
         }
         .width('60%')
@@ -43,6 +44,7 @@ struct ChatListItem {
               .textAlign(TextAlign.End)
               .backgroundColor(AppColors.chatSendBackground)
               .fontColor(AppColors.chatSendText)
+              .borderRadius(12)
               .padding(12)
           }
           .width('60%')

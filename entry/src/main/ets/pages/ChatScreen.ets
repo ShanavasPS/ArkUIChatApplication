@@ -28,7 +28,7 @@ struct ChatScreen {
   build() {
     Row() {
       Column() {
-        PageTitle({userName: this.userName})
+        PageTitle({userData: this.userData})
         Blank()
           .height(1)
           .width('100%')
@@ -75,24 +75,31 @@ struct ChatScreen {
 
 @Component
 struct PageTitle {
-  @Prop private userName: string
+  @Prop private userData: UserData
 
   build() {
-    Row() {
-      Image($r('app.media.backArrow'))
-        .width(21.8)
-        .height(19.6)
-      Text(this.userName)
-        .fontSize(21.8)
-        .margin({left: 10})
-        .textAlign(TextAlign.Start)
-        .fontWeight(FontWeight.Bold)
-    }
-    .alignSelf(ItemAlign.Start)
-    .height(61)
-    .margin({top: 36, left: 14})
-    .onClick(() => {
-      router.back()
-    })
+    Column() {
+      Row() {
+        Image($r('app.media.backArrow'))
+          .width(21.8)
+          .height(19.6)
+        Text(this.userData.name)
+          .fontSize(21.8)
+          .margin({left: 10})
+          .textAlign(TextAlign.Start)
+          .fontWeight(FontWeight.Bold)
+        Blank()
+        Image(this.userData.image)
+          .width(48)
+          .height(48)
+          .margin({right: 10})
+          .borderRadius(24)
+      }.width('100%')
+      .margin({top: 36})
+      .height(61)
+      .onClick(() => {
+        router.back()
+      })
+    }.margin({left: 14, right: 14})
   }
 }

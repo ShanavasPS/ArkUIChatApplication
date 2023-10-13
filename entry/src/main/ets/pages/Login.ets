@@ -44,8 +44,7 @@ struct Second {
         title: 'Warning',
         message: 'Please enter a username',
         autoCancel: true,
-        alignment: DialogAlignment.Bottom,
-        offset: { dx: 0, dy: -20 },
+        alignment: DialogAlignment.Center,
         gridCount: 3,
         confirm: {
           value: 'Dismiss',
