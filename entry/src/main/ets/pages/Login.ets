@@ -24,6 +24,41 @@ struct Second {
     }
   }
 
+  handleLogin() {
+    if(this.username.length == 0) {
+      this.showAlert()
+    } else {
+      this.showHomeScreen()
+    }
+  }
+
+  showHomeScreen() {
+    console.log("The user who just logged in is " + this.username)
+    this.persistedUser = this.username
+    router.pushUrl({ url: 'pages/HomeScreen' })
+  }
+
+  showAlert() {
+    AlertDialog.show(
+      {
+        title: 'Warning',
+        message: 'Please enter a username',
+        autoCancel: true,
+        alignment: DialogAlignment.Bottom,
+        offset: { dx: 0, dy: -20 },
+        gridCount: 3,
+        confirm: {
+          value: 'Dismiss',
+          action: () => {
+            console.info('Button-clicking callback')
+          }
+        },
+        cancel: () => {
+          console.info('Closed callbacks')
+        }
+      }
+    )
+  }
   build() {
     Row() {
       Column() {
@@ -63,9 +98,7 @@ struct Second {
         .width('40%')
         .height('5%')
         .onClick(() => {
-          console.log("The user who just logged in is " + this.username)
-          this.persistedUser = this.username
-          router.pushUrl({ url: 'pages/HomeScreen' })
+          this.handleLogin()
         })
       }
       .width('100%')
