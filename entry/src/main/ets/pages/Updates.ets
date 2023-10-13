@@ -1,15 +1,20 @@
 // Updates.ets
 import { AppColors } from '../model/common';
+import UpdatesData from '../model/UpdatesData';
+import UpdatesDataSource from '../model/UpdatesDataModel';
 
 @Entry
 @Component
 export default struct Updates {
-  @State message: string = 'Hi, there'
-  @State username: string = ''
-  @State password: string = ''
 
-  @State outSetValueOne: number = 40
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  datasource: UpdatesDataSource = new UpdatesDataSource()
+  updates: Array<UpdatesData> = this.datasource.getData()
+
+  @StorageLink("persistedUser") persistedUser: string = "User 2";
+
+  aboutToAppear() {
+    this.updates = this.updates.filter(item => (item.username !== this.persistedUser))
+  }
 
   build() {
     Column() {
@@ -26,17 +31,17 @@ export default struct Updates {
           .fontWeight(FontWeight.Bold)
 
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item:number) => {
+          ForEach(this.updates, (update: UpdatesData) => {
             ListItem() {
               Column() {
-                Image($r('app.media.shanavas'))
+                Image(update.image)
                   .width(48)
                   .height(48)
                   .borderRadius(24)
                   .margin({left:8, right:8})
               }
             }.editable(true)
-          }, (item:number) => item.toString())
+          }, (update:UpdatesData) => update.id.toString())
         }
         .listDirection(Axis.Horizontal)
         .width('100%')

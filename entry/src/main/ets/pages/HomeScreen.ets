@@ -4,13 +4,8 @@ import Chats from './Chats';
 import Updates from './Updates';
 import UserData from '../model/UserData';
 import UserDataSource from '../model/UserDataModel'
-
-class A {
-  text:string=''
-  num:number=0
-  image:Resource=$r('app.media.icon')
-  image_selected:Resource=$r('app.media.icon')
-}
+import TabBarDataSource from '../model/TabBarDataModel';
+import TabBarData from '../model/TabBarData';
 
 @Entry
 @Component
@@ -26,35 +21,13 @@ struct HomeScreen {
 
   @State currentIndex: number = 0
   @State title: string = "Updates"
-  @State Build: Array<Object> = [
-    {
-      text: 'Updates',
-      num: 0,
-      image: $r('app.media.updates'),
-      image_selected: $r('app.media.updates_selected'),
-    } as A,
-    {
-      text: 'Chats',
-      num: 1,
-      image: $r('app.media.chats'),
-      image_selected: $r('app.media.chats_selected'),
-    } as A,
-    {
-      text: 'You',
-      num: 2,
-      image: $r('app.media.settings'),
-      image_selected: $r('app.media.settings_selected'),
-    } as A
-  ]
+
+  tabBarDataSource: TabBarDataSource = new TabBarDataSource()
+  tabs: Array<TabBarData> = this.tabBarDataSource.getData()
 
   aboutToAppear() {
-    console.log("Inside homescreen abouttoappear")
-    console.log("Persisted user is " + this.persistedUser)
-    console.log(this.users.length.toString())
     if(this.registeredUser) {
-      console.log("Found a registered user ")
       this.user = this.users.filter(item => (item.username === this.persistedUser))[0]
-      console.log("He or She is " + this.user.username)
     }
   }
 
@@ -80,7 +53,7 @@ struct HomeScreen {
 
   @Builder NavigationToolbar() {
     Flex({alignItems: ItemAlign.Center}) {
-      ForEach(this.Build, (item:A) => {
+      ForEach(this.tabs, (item: TabBarData) => {
         Column() {
           Blank()
             .height(1)
