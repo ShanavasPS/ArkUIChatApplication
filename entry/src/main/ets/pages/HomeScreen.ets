@@ -10,12 +10,11 @@ import TabBarData from '../model/TabBarData';
 @Entry
 @Component
 struct HomeScreen {
-  datasource: UserDataSource = new UserDataSource()
-  @Provide users: Array<UserData> = this.datasource.getData()
-
   @StorageLink("persistedUser") persistedUser: string = "None";
 
-  registeredUser: Boolean = this.users.filter(item => (item.username === this.persistedUser)).length > 0
+  datasource: UserDataSource = new UserDataSource()
+  @Provide users: Array<UserData> = this.datasource.getData(this.persistedUser)
+  registeredUser: Boolean = this.datasource.isUserRegistered(this.persistedUser)
 
   private user: UserData;
 

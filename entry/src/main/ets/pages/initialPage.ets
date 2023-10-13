@@ -12,8 +12,7 @@ export default struct Chats {
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
 
-  // @LocalStorageLink variable decorator creates two-way link with property "PropA" in LocalStorage
-  @StorageLink("persistedUser") persistedUser: string = "User 2";
+  @StorageLink("persistedUser") persistedUser: string = "None";
 
   aboutToAppear() {
     if(this.persistedUser == "None") {

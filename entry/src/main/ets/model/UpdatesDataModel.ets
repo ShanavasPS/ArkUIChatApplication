@@ -5,7 +5,7 @@ export default class UpdatesDataSource {
 
   private initialData: any[] = [
     { 'name': 'Shanavas Shaji', 'username': 'shanavas.shaji', 'image': $r('app.media.shanavas') },
-    { 'name': 'Victoria Maslova', 'username': 'victoria.maslova', 'image': $r('app.media.dummy_user') },
+    { 'name': 'Victoria Maslova', 'username': 'victoria.maslova', 'image': $r('app.media.victoria') },
     { 'name': 'Alexey Smolyaninov', 'username': 'alexey.smolyaninov', 'image': $r('app.media.alexey') },
     { 'name': 'Tatu Tomppo', 'username': 'tatu.tomppo', 'image': $r('app.media.dummy_user') },
     { 'name': 'Sarath Singapati', 'username': 'sarath.singapati', 'image': $r('app.media.dummy_user') },
@@ -19,7 +19,7 @@ export default class UpdatesDataSource {
     })
   }
 
-  public getData(): Array<UpdatesData> {
-    return this.dataArray
+  public getData(username: string): Array<UpdatesData> {
+    return this.dataArray.filter(item => (item.username !== username))
   }
 }

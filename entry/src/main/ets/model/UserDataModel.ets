@@ -5,7 +5,7 @@ export default class UserDataSource {
 
   private initialData: any[] = [
     { 'name': 'Shanavas Shaji', 'username': 'shanavas.shaji', 'image': $r('app.media.shanavas') },
-    { 'name': 'Victoria Maslova', 'username': 'victoria.maslova', 'image': $r('app.media.dummy_user') },
+    { 'name': 'Victoria Maslova', 'username': 'victoria.maslova', 'image': $r('app.media.victoria') },
     { 'name': 'Alexey Smolyaninov', 'username': 'alexey.smolyaninov', 'image': $r('app.media.alexey') },
     { 'name': 'Tatu Tomppo', 'username': 'tatu.tomppo', 'image': $r('app.media.dummy_user') },
     { 'name': 'Sarath Singapati', 'username': 'sarath.singapati', 'image': $r('app.media.dummy_user') },
@@ -19,7 +19,11 @@ export default class UserDataSource {
     })
   }
 
-  public getData(): Array<UserData> {
-    return this.dataArray
+  public getData(username: string): Array<UserData> {
+    return this.dataArray.filter(item => (item.username !== username))
+  }
+
+  public isUserRegistered(username: string): Boolean {
+    return this.dataArray.filter(item => (item.username === username)).length > 0
   }
 }

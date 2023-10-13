@@ -12,7 +12,7 @@ export default struct Chats {
   @State outSetValueOne: number = 40
 
   // @LocalStorageLink variable decorator creates two-way link with property "PropA" in LocalStorage
-  @StorageLink("persistedUser") persistedUser: string = "User 2";
+  @StorageLink("persistedUser") persistedUser: string = "None";
 
   build() {
     Row() {

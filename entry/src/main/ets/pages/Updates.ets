@@ -2,19 +2,15 @@
 import { AppColors } from '../model/common';
 import UpdatesData from '../model/UpdatesData';
 import UpdatesDataSource from '../model/UpdatesDataModel';
+import UserData from '../model/UserData';
 
 @Entry
 @Component
 export default struct Updates {
+  @StorageLink("persistedUser") persistedUser: string = "None";
 
   datasource: UpdatesDataSource = new UpdatesDataSource()
-  updates: Array<UpdatesData> = this.datasource.getData()
-
-  @StorageLink("persistedUser") persistedUser: string = "User 2";
-
-  aboutToAppear() {
-    this.updates = this.updates.filter(item => (item.username !== this.persistedUser))
-  }
+  updates: Array<UpdatesData> = this.datasource.getData(this.persistedUser)
 
   build() {
     Column() {
