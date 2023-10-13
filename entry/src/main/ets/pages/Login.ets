@@ -14,7 +14,7 @@ struct Second {
   controller: TextInputController = new TextInputController()
   @State outSetValueOne: number = 40
 
-  @StorageLink("persistedUser") persistedUser: string = "User 2";
+  @StorageLink("persistedUser") persistedUser: string = "None";
 
   aboutToAppear() {
     if(this.persistedUser == "None") {
@@ -64,6 +64,7 @@ struct Second {
         .width('40%')
         .height('5%')
         .onClick(() => {
+          console.log("The user who just logged in is " + this.username)
           this.persistedUser = this.username
           router.pushUrl({ url: 'pages/HomeScreen' })
         })

@@ -20,7 +20,7 @@ struct HomeScreen {
 
   @StorageLink("persistedUser") persistedUser: string = "None";
 
-  registeredUser: Boolean = this.users.filter(item => (item.email === this.persistedUser)).length > 0
+  registeredUser: Boolean = this.users.filter(item => (item.username === this.persistedUser)).length > 0
 
   private user: UserData;
 
@@ -48,8 +48,13 @@ struct HomeScreen {
   ]
 
   aboutToAppear() {
+    console.log("Inside homescreen abouttoappear")
+    console.log("Persisted user is " + this.persistedUser)
+    console.log(this.users.length.toString())
     if(this.registeredUser) {
-      this.user = this.users.filter(item => (item.email === this.persistedUser))[0]
+      console.log("Found a registered user ")
+      this.user = this.users.filter(item => (item.username === this.persistedUser))[0]
+      console.log("He or She is " + this.user.username)
     }
   }
 

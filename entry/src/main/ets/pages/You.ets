@@ -18,13 +18,13 @@ export default  struct You {
 
   @StorageLink("persistedUser") persistedUser: string = "None";
 
-  registeredUser: Boolean = this.users.filter(item => (item.email === this.persistedUser)).length > 0
+  registeredUser: Boolean = this.users.filter(item => (item.username === this.persistedUser)).length > 0
 
   private user: UserData;
 
   aboutToAppear() {
     if(this.registeredUser) {
-      this.user = this.users.filter(item => (item.email === this.persistedUser))[0]
+      this.user = this.users.filter(item => (item.username === this.persistedUser))[0]
     }
   }
 
