@@ -22,8 +22,11 @@ struct ChatScreen {
   private userData: UserData = router.getParams().userData
   @State userName:string = this.userData.name
 
-  private sendMessage(message: string) {
-    this.storedChats.push(new ChatData(this.userData.name, message, "some time", 'send'))
+  private sendMessage() {
+    if(this.message.length != 0) {
+      this.storedChats.push(new ChatData(this.userData.name, this.message, "some time", 'send'))
+      this.message = ''
+    }
   }
 
   build() {
@@ -49,17 +52,18 @@ struct ChatScreen {
               .onChange((value: string) => {
                 this.message = value
               })
+              .onSubmit(() => {
+                this.sendMessage()
+              })
             Button() {
               Text('Send')
                 .fontSize(18)
                 .fontWeight(FontWeight.Bold)
-                .fontColor(Color.Blue)
+                .fontColor(this.message.length >0 ? Color.Blue: Color.Gray)
             }
             .margin({left: 6})
             .onClick(() => {
-              if(this.message.length != 0) {
-                this.sendMessage(this.message)
-              }
+              this.sendMessage()
             })
             .backgroundColor(Color.White)
           }
