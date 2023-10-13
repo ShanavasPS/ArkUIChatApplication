@@ -14,7 +14,7 @@ struct ChatScreen {
   @State message: string = ''
 
   datasource: ChatDataSource = new ChatDataSource()
-  @Provide chats: Array<ChatData> = this.datasource.getData()
+  chats: Array<ChatData> = this.datasource.getData()
 
   @StorageLink("chats") storedChats : Array<ChatData> = this.chats;
 

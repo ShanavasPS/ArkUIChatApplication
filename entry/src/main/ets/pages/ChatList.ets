@@ -5,7 +5,6 @@ import { AppColors } from '../model/common';
 @Component
 export default struct ChatList {
   @Link private userName: string
-  @Consume private chats: Array<ChatData>
   @StorageLink("chats") storedChats : Array<ChatData> = [];
 
   build() {
