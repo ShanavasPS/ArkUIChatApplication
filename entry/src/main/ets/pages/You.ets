@@ -2,19 +2,12 @@
 import router from '@ohos.router';
 import { AppColors } from '../model/common';
 import UserData from '../model/UserData';
-import UserDataSource from '../model/UserDataModel';
 
-@Entry
 @Component
-export default  struct You {
-  @State message: string = 'Hi, there'
-  @State username: string = 'Shanavas Shaji'
-  @State password: string = ''
+export default struct You {
   controller: TextInputController = new TextInputController()
-  @State outSetValueOne: number = 40
 
-  datasource: UserDataSource = new UserDataSource()
-  users: Array<UserData> = this.datasource.getData()
+  @Consume private users: Array<UserData>
 
   @StorageLink("persistedUser") persistedUser: string = "None";
 

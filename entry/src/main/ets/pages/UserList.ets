@@ -1,12 +1,9 @@
 import router from '@ohos.router'
 import UserData from '../model/UserData'
-import UserDataSource from '../model/UserDataModel'
 
-@Entry
 @Component
 export default struct UserList {
-  datasource: UserDataSource = new UserDataSource()
-  users: Array<UserData> = this.datasource.getData()
+  @Consume private users: Array<UserData>
 
   build() {
     List({ space: 8, initialIndex: 0 }) {

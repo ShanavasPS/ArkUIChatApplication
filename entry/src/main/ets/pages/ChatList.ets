@@ -1,7 +1,6 @@
 import router from '@ohos.router'
 import App from '@system.app';
 import ChatData from '../model/ChatData'
-import ChatDataSource from '../model/ChatDataModel'
 import { AppColors } from '../model/common';
 
 @Component
@@ -9,12 +8,6 @@ export default struct ChatList {
   @Link private userName: string
   @Consume private chats: Array<ChatData>
 
-  aboutToAppear() {
-    console.log("iNSIDE CHATLIST")
-    console.log(this.chats.length.toString())
-    console.log(this.userName)
-    console.log(this.chats.filter(item => (item.name === this.userName)).length.toString())
-  }
   build() {
     List() {
       ForEach(this.chats.filter(item => (item.name === this.userName)), item => {

@@ -1,9 +1,9 @@
 // Chats.ets
+import UserData from '../model/UserData';
 import UserList from './UserList';
 
 PersistentStorage.persistProp("persistedUser", "User 1");
 
-@Entry
 @Component
 export default struct Chats {
   @State message: string = 'Hi, there'
