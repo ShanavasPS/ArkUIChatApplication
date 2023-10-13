@@ -8,6 +8,10 @@ This application can be used to learn basic application development using DevEco
 
 **Demo password**: password
 
+Application entry: https://github.com/ShanavasPS/ChatApplication/blob/master/entry/src/main/ets/entryability/EntryAbility.ets
+
+Main ets file: https://github.com/ShanavasPS/ChatApplication/blob/master/entry/src/main/ets/pages/Login.ets
+
 <img width="230" alt="Screenshot 2023-10-13 152744" src="https://github.com/ShanavasPS/ChatApplication/assets/8370662/32f6220a-9b8b-430d-b8fd-962bd1bbb549">
 <img width="229" alt="Screenshot 2023-10-13 152814" src="https://github.com/ShanavasPS/ChatApplication/assets/8370662/95c3f207-a47a-4194-ae6c-408bd607e9d9">
 <img width="230" alt="Screenshot 2023-10-13 152847" src="https://github.com/ShanavasPS/ChatApplication/assets/8370662/550b7fd5-965a-4393-b96a-8f235f2e701a">
