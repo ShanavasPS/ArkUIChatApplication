@@ -2,6 +2,7 @@ import UserData from './UserData';
 
 export default class UserDataSource {
   private dataArray: Array<UserData> = []
+  private username: string
 
   private initialData: any[] = [
     { 'name': 'Shanavas Shaji', 'username': 'shanavas.shaji', 'image': $r('app.media.shanavas') },
@@ -13,17 +14,29 @@ export default class UserDataSource {
     { 'name': 'Vidhya Priya', 'username': 'vidhya.priya', 'image': $r('app.media.dummy_user') },
   ]
 
-  constructor() {
+  constructor(username: string) {
     this.initialData.forEach(item => {
       this.dataArray.push(new UserData(item.name, item.username, item.image));
     })
+    this.username = username
   }
 
-  public getData(username: string): Array<UserData> {
-    return this.dataArray.filter(item => (item.username !== username))
+  public getData(): Array<UserData> {
+    return this.dataArray.filter(item => (item.username !== this.username))
   }
 
-  public isUserRegistered(username: string): Boolean {
-    return this.dataArray.filter(item => (item.username === username)).length > 0
+  public isUserRegistered(): Boolean {
+    return this.dataArray.filter(item => (item.username === this.username)).length > 0
+  }
+
+  public getUser(): UserData {
+    const users: Array<UserData> =  this.dataArray.filter(item => (item.username === this.username))
+    if(users.length > 0) {
+      return users[0];
+    }
+    else {
+      // @ts-ignore
+      return new UserData("Guest", this.username, $r('app.media.dummy_user'))
+    }
   }
 }

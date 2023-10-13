@@ -4,7 +4,6 @@ import UserData from '../model/UserData'
 @Component
 export default struct UserList {
   @Consume private users: Array<UserData>
-  @StorageLink("persistedUser") persistedUser: string = "None";
 
   build() {
     List({ space: 8, initialIndex: 0 }) {

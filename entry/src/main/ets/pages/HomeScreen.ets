@@ -12,23 +12,15 @@ import TabBarData from '../model/TabBarData';
 struct HomeScreen {
   @StorageLink("persistedUser") persistedUser: string = "None";
 
-  datasource: UserDataSource = new UserDataSource()
-  @Provide users: Array<UserData> = this.datasource.getData(this.persistedUser)
-  registeredUser: Boolean = this.datasource.isUserRegistered(this.persistedUser)
-
-  private user: UserData;
+  datasource: UserDataSource = new UserDataSource(this.persistedUser)
+  @Provide users: Array<UserData> = this.datasource.getData()
+  @Provide user: UserData = this.datasource.getUser()
 
   @State currentIndex: number = 0
   @State title: string = "Updates"
 
   tabBarDataSource: TabBarDataSource = new TabBarDataSource()
   tabs: Array<TabBarData> = this.tabBarDataSource.getData()
-
-  aboutToAppear() {
-    if(this.registeredUser) {
-      this.user = this.users.filter(item => (item.username === this.persistedUser))[0]
-    }
-  }
 
   @Builder NavigationTitle() {
     Column() {
@@ -42,7 +34,7 @@ struct HomeScreen {
 
   @Builder NavigationMenus() {
     Row() {
-      Image(this.registeredUser ? this.user.image : $r('app.media.dummy_user'))
+      Image(this.user.image)
         .width(48)
         .height(48)
         .borderRadius(24)

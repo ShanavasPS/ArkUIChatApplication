@@ -7,19 +7,7 @@ import UserData from '../model/UserData';
 export default struct You {
   controller: TextInputController = new TextInputController()
 
-  @Consume private users: Array<UserData>
-
-  @StorageLink("persistedUser") persistedUser: string = "None";
-
-  registeredUser: Boolean = this.users.filter(item => (item.username === this.persistedUser)).length > 0
-
-  private user: UserData;
-
-  aboutToAppear() {
-    if(this.registeredUser) {
-      this.user = this.users.filter(item => (item.username === this.persistedUser))[0]
-    }
-  }
+  @Consume private user: UserData;
 
   build() {
       Column() {
@@ -30,10 +18,10 @@ export default struct You {
           .align(Alignment.Top)
         Row() {
           Column() {
-            Image(this.registeredUser ? this.user.image : $r('app.media.dummy_user'))
+            Image(this.user.image)
               .width(100)
               .height(100)
-            Text(this.persistedUser)
+            Text(this.user.name)
               .fontSize(20)
               .fontWeight(FontWeight.Bold)
               .fontColor(Color.Black)
