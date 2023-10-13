@@ -16,13 +16,14 @@ struct ChatScreen {
   datasource: ChatDataSource = new ChatDataSource()
   @Provide chats: Array<ChatData> = this.datasource.getData()
 
+  @StorageLink("chats") storedChats : Array<ChatData> = this.chats;
+
   // @ts-ignore
   private userData: UserData = router.getParams().userData
   @State userName:string = this.userData.name
 
   private sendMessage(message: string) {
-    this.datasource.addMessage(this.userData.name, message, "some time");
-    this.chats = this.datasource.getData()
+    this.storedChats.push(new ChatData(this.userData.name, message, "some time", 'send'))
   }
 
   build() {

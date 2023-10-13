@@ -6,10 +6,11 @@ import { AppColors } from '../model/common';
 export default struct ChatList {
   @Link private userName: string
   @Consume private chats: Array<ChatData>
+  @StorageLink("chats") storedChats : Array<ChatData> = [];
 
   build() {
     List() {
-      ForEach(this.chats.filter(item => (item.name === this.userName)), item => {
+      ForEach(this.storedChats.filter(item => (item.name === this.userName)), item => {
         ListItem() {
           ChatListItem({ chatItem: item })
         }
